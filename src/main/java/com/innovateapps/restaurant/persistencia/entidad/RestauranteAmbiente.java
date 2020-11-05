@@ -2,6 +2,7 @@ package com.innovateapps.restaurant.persistencia.entidad;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 public class RestauranteAmbiente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -57,4 +59,3 @@ public class RestauranteAmbiente {
     @JoinColumn(name = "ID_RESTAURANTE", insertable = false, updatable = false)
     private Restaurante restaurante;
 }
-
