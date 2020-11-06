@@ -1,10 +1,12 @@
 package com.innovateapps.restaurant.domain.service;
 
 import com.innovateapps.restaurant.domain.FoodType;
+import com.innovateapps.restaurant.domain.dto.FoodTypeDto;
 import com.innovateapps.restaurant.domain.response.EnResponseBase;
 import com.innovateapps.restaurant.domain.response.Message;
 import com.innovateapps.restaurant.domain.repository.FoodTypeRepository;
 import com.innovateapps.restaurant.domain.response.FoodTypeResponse;
+import com.innovateapps.restaurant.persistencia.mapeo.TypeFoodDtoMapeo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,8 @@ import static com.innovateapps.restaurant.domain.response.EnumMessages.*;
 public class FoodTypeService {
     @Autowired
     private FoodTypeRepository foodTypeRepository;
+    @Autowired
+    private TypeFoodDtoMapeo typeFoodDtoMapeo;
 
     public FoodTypeResponse getAll(){
         FoodTypeResponse response = new FoodTypeResponse();
@@ -56,7 +60,6 @@ public class FoodTypeService {
 
     public FoodType getOne(Integer id){
         FoodType foodType  = new FoodType();
-        Optional<FoodType> foodTypeOptd;
         try{
             Optional<FoodType> foodTypeOpt = foodTypeRepository.getOne(id);
             if(foodTypeOpt.isPresent()){
@@ -72,16 +75,40 @@ public class FoodTypeService {
         return foodTypeRepository.save(foodType);
     }
 
-    public FoodType save(FoodType foodType){
-        try{
-            foodType = foodTypeRepository.save(foodType);
-            foodType.setMensaje(new Message(REGISTRO_EXITOSO.getCodigo(),REGISTRO_EXITOSO.getDescripcion(),REGISTRO_EXITOSO.getTipo()));
-            foodType.setEsCorrecto(true);
-        }catch (Exception e){
-            foodType.setMensaje(new Message(ERROR_BASE_DATOS.getCodigo(),ERROR_BASE_DATOS.getDescripcion(),ERROR_BASE_DATOS.getTipo()));
-            e.printStackTrace();
+    public FoodType save(FoodTypeDto foodTypeDto){
+        return administrar(foodTypeDto, new FoodType());
+    }
+
+    public FoodType update(FoodTypeDto foodTypeDto, Integer id){
+        Optional<FoodType> foodTypeOpt = foodTypeRepository.getOne(id);
+        if(foodTypeOpt.isPresent()){
+            FoodType foodType = typeFoodDtoMapeo.toFoodType(foodTypeDto);
+            foodType.setFoodId(id);
+            return administrar(foodTypeDto, foodType);
+        }else{
+            FoodType foodType = new FoodType();
+            foodType.setMensaje(new Message(REGISTRO_NO_ENCONTRADO.getCodigo(),REGISTRO_NO_ENCONTRADO.getDescripcion(),REGISTRO_NO_ENCONTRADO.getTipo()));
+            return foodType;
         }
-        return foodTypeRepository.save(foodType);
+    }
+
+    public FoodType administrar(FoodTypeDto foodTypeDto, FoodType foodType){
+        foodType.setEsCorrecto(false);
+		try {
+            if(foodType.equals(new FoodType())){
+                foodType = typeFoodDtoMapeo.toFoodType (foodTypeDto);
+                foodType = foodTypeRepository.save(foodType);
+                foodType.setMensaje(new Message(REGISTRO_EXITOSO.getCodigo(),REGISTRO_EXITOSO.getDescripcion(),REGISTRO_EXITOSO.getTipo()));
+            }else{
+                foodType = foodTypeRepository.save(foodType);
+                foodType.setMensaje(new Message(REGISTRO_ACTUALIZADO.getCodigo(),REGISTRO_ACTUALIZADO.getDescripcion(),REGISTRO_ACTUALIZADO.getTipo()));
+            }
+            foodType.setEsCorrecto(true);
+
+		}catch (Exception p){
+            foodType.setMensaje(new Message(PARAMETROS_INCORRECTOS.getCodigo(),PARAMETROS_INCORRECTOS.getDescripcion(),PARAMETROS_INCORRECTOS.getTipo()));
+		}
+        return foodType;
     }
 
     public EnResponseBase delete(Integer id){

@@ -49,8 +49,21 @@ public class TipoComidaRepositorio implements FoodTypeRepository {
         restaurante.setIdUsuarioDesde(ID_USUARIO_DEFECTO);
         return mapper.toFoodType(tipoComidaJpaRepositorio.save(restaurante));
     }
+
     @Override
-    public void delete(int id) {
-        tipoComidaJpaRepositorio.deleteById(id);
+    public FoodType update(FoodType foodType) {
+        TipoComida restaurante = mapper.toTipoComida(foodType);
+        restaurante.setFechaDesde(LocalDateTime.now());
+        restaurante.setIdUsuarioDesde(ID_USUARIO_DEFECTO);
+        restaurante.setFechaBaja(null);
+        restaurante.setIdUsuarioBaja(null);
+        return mapper.toFoodType(tipoComidaJpaRepositorio.save(restaurante));
+    }
+    @Override
+    public FoodType delete(int id) {
+        TipoComida tipoComida = tipoComidaJpaRepositorio.getOne(id);
+        tipoComida.setFechaBaja(LocalDateTime.now());
+        tipoComida.setIdUsuarioBaja(ID_USUARIO_DEFECTO);
+        return mapper.toFoodType(tipoComida);
     }
 }

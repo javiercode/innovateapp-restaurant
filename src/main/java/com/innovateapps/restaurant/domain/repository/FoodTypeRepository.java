@@ -14,5 +14,7 @@ public interface FoodTypeRepository {
     public Optional<FoodType> getOne(Integer id);
 
     public FoodType save(FoodType foodType);
-    public void delete(int id);
+
+    public FoodType update(FoodType foodType);
+    public FoodType delete(int id);
 }

@@ -1,6 +1,7 @@
-package com.innovateapps.restaurant.web.controlador;
+package com.innovateapps.restaurant.web.controller;
 
 import com.innovateapps.restaurant.domain.FoodType;
+import com.innovateapps.restaurant.domain.dto.FoodTypeDto;
 import com.innovateapps.restaurant.domain.response.EnResponseBase;
 import com.innovateapps.restaurant.domain.response.FoodTypeResponse;
 import com.innovateapps.restaurant.domain.service.FoodTypeService;
@@ -43,22 +44,33 @@ public class TypeFoodController {
     }
 
     @PostMapping("/registrar")
-    public ResponseEntity<FoodType> registrar(@RequestBody FoodType foodType) {
-        return new ResponseEntity<FoodType>(foodTypeService.save(foodType), HttpStatus.CREATED);
+    public ResponseEntity<FoodType> registrar(@RequestBody FoodTypeDto foodTypeDto) {
+        return new ResponseEntity<FoodType>(foodTypeService.save(foodTypeDto), HttpStatus.CREATED);
     }
 
     @DeleteMapping("/delete")
-    public ResponseEntity<EnResponseBase> delete(int id) {
+    public ResponseEntity<EnResponseBase> eliminar(int id) {
         return new ResponseEntity<EnResponseBase>(foodTypeService.delete(id), HttpStatus.OK) ;
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<FoodType> getFoodType(@PathVariable("id") Integer id) {
+    public ResponseEntity<FoodType> obtener(@PathVariable("id") Integer id) {
         FoodType foodType = foodTypeService.getOne(id);
         if(foodType.esCorrecto()){
             return new ResponseEntity<FoodType>(foodTypeService.getOne(id), HttpStatus.OK);
         }else{
             return new ResponseEntity<FoodType>(foodTypeService.getOne(id), HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @PutMapping("/actualizar/{id}")
+    public ResponseEntity<FoodType> actualizar(@RequestBody FoodTypeDto foodTypeDto,
+                                               @PathVariable("id") Integer id) {
+        FoodType foodType = foodTypeService.update(foodTypeDto,id);
+        if(foodType.esCorrecto()){
+            return new ResponseEntity<FoodType>(foodType, HttpStatus.OK);
+        }else{
+            return new ResponseEntity<FoodType>(foodType, HttpStatus.NOT_ACCEPTABLE);
         }
     }
 
