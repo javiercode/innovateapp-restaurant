@@ -1,6 +1,6 @@
 package com.innovateapps.restaurant.persistencia.mapeo;
 
-import com.innovateapps.restaurant.dominio.Restaurant;
+import com.innovateapps.restaurant.domain.Restaurant;
 import com.innovateapps.restaurant.persistencia.entidad.Restaurante;
 import org.mapstruct.*;
 

@@ -1,8 +1,6 @@
 package com.innovateapps.restaurant.persistencia.mapeo;
 
-import com.innovateapps.restaurant.dominio.Restaurant;
-import com.innovateapps.restaurant.dominio.TypeEnviroment;
-import com.innovateapps.restaurant.persistencia.entidad.Restaurante;
+import com.innovateapps.restaurant.domain.TypeEnviroment;
 import com.innovateapps.restaurant.persistencia.entidad.TipoAmbiente;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;

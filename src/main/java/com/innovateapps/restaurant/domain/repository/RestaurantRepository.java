@@ -1,9 +1,6 @@
-package com.innovateapps.restaurant.dominio.repositorio;
+package com.innovateapps.restaurant.domain.repository;
 
-import com.innovateapps.restaurant.dominio.Restaurant;
-import com.innovateapps.restaurant.persistencia.entidad.Restaurante;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
+import com.innovateapps.restaurant.domain.Restaurant;
 
 import java.util.List;
 import java.util.Optional;

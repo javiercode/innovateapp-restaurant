@@ -1,10 +1,10 @@
-package com.innovateapps.restaurant.dominio.servicio;
+package com.innovateapps.restaurant.domain.service;
 
-import com.innovateapps.restaurant.dominio.FoodType;
-import com.innovateapps.restaurant.dominio.dto.EnResponseBase;
-import com.innovateapps.restaurant.dominio.dto.Message;
-import com.innovateapps.restaurant.dominio.repositorio.FoodTypeRepository;
-import com.innovateapps.restaurant.dominio.response.FoodTypeResponse;
+import com.innovateapps.restaurant.domain.FoodType;
+import com.innovateapps.restaurant.domain.response.EnResponseBase;
+import com.innovateapps.restaurant.domain.response.Message;
+import com.innovateapps.restaurant.domain.repository.FoodTypeRepository;
+import com.innovateapps.restaurant.domain.response.FoodTypeResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static com.innovateapps.restaurant.dominio.dto.EnumMessages.*;
+import static com.innovateapps.restaurant.domain.response.EnumMessages.*;
 
 @Service
 public class FoodTypeService {

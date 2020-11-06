@@ -1,12 +1,13 @@
-package com.innovateapps.restaurant.dominio.dto;
+package com.innovateapps.restaurant.domain.response;
 
 
+import com.innovateapps.restaurant.domain.dto.EnumTypeMessage;
 import lombok.Getter;
 
 @Getter
 public enum EnumMessages {
 
-    ERROR_BASE_DATOS("Hubo un error en la base de datos","INA-GG-0001",EnumTypeMessage.ADVERTENCIA.getCodigo()),
+    ERROR_BASE_DATOS("Hubo un error en la base de datos","INA-GG-0001", EnumTypeMessage.ADVERTENCIA.getCodigo()),
     REGISTRO_EXITOSO("Se registro exitosamente","INA-GG-0002",EnumTypeMessage.INFORMACION.getCodigo()),
     ELIMINACION_EXITOSO("Se elimino exitosamente","INA-GG-0003",EnumTypeMessage.INFORMACION.getCodigo()),
     ERROR_RECUPERAR_INFO("No se pudo encontrar la informacion","INA-GG-0004",EnumTypeMessage.ERROR.getCodigo()),

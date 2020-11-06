@@ -1,17 +1,11 @@
 package com.innovateapps.restaurant.persistencia;
 
-import com.innovateapps.restaurant.dominio.Restaurant;
-import com.innovateapps.restaurant.dominio.RestaurantEnviroment;
-import com.innovateapps.restaurant.dominio.repositorio.RestaurantEnviromentRepository;
-import com.innovateapps.restaurant.dominio.repositorio.RestaurantRepository;
-import com.innovateapps.restaurant.persistencia.entidad.Restaurante;
+import com.innovateapps.restaurant.domain.RestaurantEnviroment;
+import com.innovateapps.restaurant.domain.repository.RestaurantEnviromentRepository;
 import com.innovateapps.restaurant.persistencia.entidad.RestauranteAmbiente;
 import com.innovateapps.restaurant.persistencia.jpa.RestauranteAmbienteJpaRepositorio;
-import com.innovateapps.restaurant.persistencia.jpa.RestauranteJpaRepositorio;
 import com.innovateapps.restaurant.persistencia.mapeo.RestauranteAmbienteMapeo;
-import com.innovateapps.restaurant.persistencia.mapeo.RestauranteMapeo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Repository;
 

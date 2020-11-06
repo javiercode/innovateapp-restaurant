@@ -1,7 +1,7 @@
 package com.innovateapps.restaurant.persistencia;
 
-import com.innovateapps.restaurant.dominio.TypeEnviroment;
-import com.innovateapps.restaurant.dominio.repositorio.TypeEnviromentRepository;
+import com.innovateapps.restaurant.domain.TypeEnviroment;
+import com.innovateapps.restaurant.domain.repository.TypeEnviromentRepository;
 import com.innovateapps.restaurant.persistencia.entidad.TipoAmbiente;
 import com.innovateapps.restaurant.persistencia.jpa.TipoAmbienteJpaRepositorio;
 import com.innovateapps.restaurant.persistencia.mapeo.TipoAmbienteMapeo;

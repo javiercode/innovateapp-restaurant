@@ -1,24 +1,19 @@
 package com.innovateapps.restaurant.persistencia;
 
-import com.innovateapps.restaurant.dominio.FoodType;
-import com.innovateapps.restaurant.dominio.RestaurantEnviroment;
-import com.innovateapps.restaurant.dominio.repositorio.FoodTypeRepository;
-import com.innovateapps.restaurant.dominio.repositorio.RestaurantEnviromentRepository;
-import com.innovateapps.restaurant.persistencia.entidad.RestauranteAmbiente;
+import com.innovateapps.restaurant.domain.FoodType;
+import com.innovateapps.restaurant.domain.repository.FoodTypeRepository;
 import com.innovateapps.restaurant.persistencia.entidad.TipoComida;
 import com.innovateapps.restaurant.persistencia.jpa.TipoComidaJpaRepositorio;
-import com.innovateapps.restaurant.persistencia.mapeo.RestauranteAmbienteMapeo;
 import com.innovateapps.restaurant.persistencia.mapeo.TipoComidaMapeo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-import static com.innovateapps.restaurant.dominio.dto.IConstantesDomain.ID_USUARIO_DEFECTO;
+import static com.innovateapps.restaurant.domain.dto.IConstantesDomain.ID_USUARIO_DEFECTO;
 
 @Repository
 public class TipoComidaRepositorio implements FoodTypeRepository {

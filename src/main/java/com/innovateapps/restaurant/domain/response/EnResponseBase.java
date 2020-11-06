@@ -1,4 +1,4 @@
-package com.innovateapps.restaurant.dominio.dto;
+package com.innovateapps.restaurant.domain.response;
 
 import lombok.Data;
 

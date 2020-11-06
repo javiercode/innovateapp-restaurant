@@ -1,10 +1,8 @@
-package com.innovateapps.restaurant.dominio;
+package com.innovateapps.restaurant.domain;
 
-import com.innovateapps.restaurant.dominio.dto.EnResponseBase;
+import com.innovateapps.restaurant.domain.response.EnResponseBase;
 import lombok.Getter;
 import lombok.Setter;
-
-import javax.persistence.Column;
 
 @Getter
 @Setter

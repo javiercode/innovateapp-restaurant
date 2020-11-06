@@ -1,7 +1,6 @@
-package com.innovateapps.restaurant.dominio.repositorio;
+package com.innovateapps.restaurant.domain.repository;
 
-import com.innovateapps.restaurant.dominio.FoodType;
-import com.innovateapps.restaurant.dominio.RestaurantEnviroment;
+import com.innovateapps.restaurant.domain.FoodType;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,16 +1,17 @@
 package com.innovateapps.restaurant.web.controlador;
 
-import com.innovateapps.restaurant.dominio.FoodType;
-import com.innovateapps.restaurant.dominio.dto.EnResponseBase;
-import com.innovateapps.restaurant.dominio.response.FoodTypeResponse;
-import com.innovateapps.restaurant.dominio.servicio.FoodTypeService;
+import com.innovateapps.restaurant.domain.FoodType;
+import com.innovateapps.restaurant.domain.response.EnResponseBase;
+import com.innovateapps.restaurant.domain.response.FoodTypeResponse;
+import com.innovateapps.restaurant.domain.service.FoodTypeService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/foodType")
@@ -19,12 +20,25 @@ public class TypeFoodController {
     private FoodTypeService foodTypeService;
 
     @GetMapping("/all")
+    @ApiOperation("Retorna todos los tipos de comida")
+    @ApiResponses({
+            @ApiResponse(code = 200, message = "OK"),
+            @ApiResponse(code = 404, message = "Tipos de comida no encontrados")
+    })
     public ResponseEntity<FoodTypeResponse> getAll() {
-        return new ResponseEntity<FoodTypeResponse>(foodTypeService.getAll(), HttpStatus.OK);
+        FoodTypeResponse foodTypeResponse = foodTypeService.getAll();
+        if(foodTypeResponse.getFoodTypeList().isEmpty()){
+            return new ResponseEntity<FoodTypeResponse>(foodTypeService.getAll(), HttpStatus.OK);
+        }else{
+            return new ResponseEntity<FoodTypeResponse>(foodTypeService.getAll(), HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping("/paginado")
-    public ResponseEntity<FoodTypeResponse> getPaginado(Integer pagina, Integer cantidad) {
+    @ApiOperation("Retorna todos los tipos de comida por paginado")
+    public ResponseEntity<FoodTypeResponse> getPaginado(
+            @ApiParam(value = "numero de pagina", required = false, example = "0") Integer pagina,
+            @ApiParam(value = "cantidad de registro en la pagina", required = false, example = "5") Integer cantidad) {
         return new ResponseEntity<FoodTypeResponse>(foodTypeService.getPaginado(pagina,cantidad), HttpStatus.OK);
     }
 

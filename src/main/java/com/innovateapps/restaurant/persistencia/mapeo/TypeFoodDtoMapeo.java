@@ -10,7 +10,7 @@ import org.mapstruct.Mappings;
 import java.util.List;
 
 @Mapper(componentModel = "spring")
-public interface TipoComidaMapeo {
+public interface TypeFoodDtoMapeo {
     @Mappings({
             @Mapping(source = "id", target = "foodId"),
             @Mapping(source = "nombre", target = "name"),

@@ -1,4 +1,4 @@
-package com.innovateapps.restaurant.dominio;
+package com.innovateapps.restaurant.domain;
 
 import lombok.Getter;
 import lombok.Setter;
