@@ -73,13 +73,4 @@ public class TypeFoodController {
             return new ResponseEntity<FoodType>(foodType, HttpStatus.NOT_ACCEPTABLE);
         }
     }
-
-//    public Optional<FoodType> getProduct(int productId) {
-//        return foodTypeService.getProduct(productId);
-//    }
-
-//    public Optional<List<FoodType>> getByCategory(int categoryId) {
-//        return foodTypeService.getByCategory(categoryId);
-//    }
-
 }
