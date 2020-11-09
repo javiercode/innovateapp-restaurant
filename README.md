@@ -36,6 +36,7 @@ The http-request library is available from [Maven Central](http://search.maven.o
 </dependency>
 ```
 
+
 # Usando el complemento descargado
 
 ```
@@ -45,7 +46,7 @@ $ mvn clean install
 
 ### Ejemplos
 La api se encuentra publicada y documentada en:
-[Heroku](https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt)https://innovateapps-restaurant.herokuapp.com/innovate-apps/api/swagger-ui.html)
+[Heroku](https://innovateapps-restaurant.herokuapp.com/innovate-apps/api/swagger-ui.html)
 
 
 ### Seguridad
