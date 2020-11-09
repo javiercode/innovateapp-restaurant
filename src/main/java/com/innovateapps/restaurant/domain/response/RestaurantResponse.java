@@ -1,13 +1,13 @@
 package com.innovateapps.restaurant.domain.response;
 
-import com.innovateapps.restaurant.domain.EnviromentType;
 import com.innovateapps.restaurant.domain.FoodType;
+import com.innovateapps.restaurant.domain.Restaurant;
 import lombok.Data;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
-public class EnviromentTypeResponse extends EnResponseBase {
-	List<EnviromentType> enviromentTypeList = new ArrayList<>();
+public class RestaurantResponse extends EnResponseBase {
+	List<Restaurant> restaurantList = new ArrayList<>();
 }

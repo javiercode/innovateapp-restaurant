@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
-import static com.innovateapps.restaurant.domain.dto.IConstantesDomain.ID_USUARIO_DEFECTO;
+import static com.innovateapps.restaurant.domain.IConstantesDomain.ID_USUARIO_DEFECTO;
 
 @Repository
 public class TipoComidaRepositorio implements FoodTypeRepository {

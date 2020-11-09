@@ -34,8 +34,8 @@ public class FoodTypeService {
                 response.setMensaje(new Message(REGISTRO_NO_ENCONTRADO.getCodigo(),REGISTRO_NO_ENCONTRADO.getDescripcion(),REGISTRO_NO_ENCONTRADO.getTipo()));
             }
             response.setFoodTypeList(foodTypeList);
-            response.setEsCorrecto(true);
         }catch (Exception e){
+            response.setEsCorrecto(false);
             response.setMensaje(new Message(ERROR_BASE_DATOS.getCodigo(),ERROR_BASE_DATOS.getDescripcion(),ERROR_BASE_DATOS.getTipo()));
         }
         return response;
@@ -51,8 +51,8 @@ public class FoodTypeService {
                 response.setMensaje(new Message(REGISTRO_NO_ENCONTRADO.getCodigo(),REGISTRO_NO_ENCONTRADO.getDescripcion(),REGISTRO_NO_ENCONTRADO.getTipo()));
             }
             response.setFoodTypeList(foodTypeList);
-            response.setEsCorrecto(true);
         }catch (Exception e){
+            response.setEsCorrecto(false);
             response.setMensaje(new Message(ERROR_BASE_DATOS.getCodigo(),ERROR_BASE_DATOS.getDescripcion(),ERROR_BASE_DATOS.getTipo()));
         }
         return response;
@@ -64,11 +64,11 @@ public class FoodTypeService {
             Optional<FoodType> foodTypeOpt = foodTypeRepository.getOne(id);
             if(foodTypeOpt.isPresent()){
                 foodType = foodTypeOpt.get();
-                foodType.setEsCorrecto(true);
             }else{
                 foodType.setMensaje(new Message(REGISTRO_NO_ENCONTRADO.getCodigo(),REGISTRO_NO_ENCONTRADO.getDescripcion(),REGISTRO_NO_ENCONTRADO.getTipo()));
             }
         }catch (Exception e){
+            foodType.setEsCorrecto(false);
             foodType.setMensaje(new Message(ERROR_BASE_DATOS.getCodigo(),ERROR_BASE_DATOS.getDescripcion(),ERROR_BASE_DATOS.getTipo()));
             e.printStackTrace();
         }
@@ -95,7 +95,7 @@ public class FoodTypeService {
     public FoodType administrar(FoodTypeDto foodTypeDto, FoodType foodType){
         foodType.setEsCorrecto(false);
 		try {
-            if(foodType.equals(new FoodType())){
+            if(foodType.getFoodId() == null){
                 foodType = foodTypeDtoMapeo.toFoodType (foodTypeDto);
                 foodType = foodTypeRepository.save(foodType);
                 foodType.setMensaje(new Message(REGISTRO_EXITOSO.getCodigo(),REGISTRO_EXITOSO.getDescripcion(),REGISTRO_EXITOSO.getTipo()));
@@ -103,9 +103,8 @@ public class FoodTypeService {
                 foodType = foodTypeRepository.save(foodType);
                 foodType.setMensaje(new Message(REGISTRO_ACTUALIZADO.getCodigo(),REGISTRO_ACTUALIZADO.getDescripcion(),REGISTRO_ACTUALIZADO.getTipo()));
             }
-            foodType.setEsCorrecto(true);
-
 		}catch (Exception p){
+            foodType.setEsCorrecto(false);
             foodType.setMensaje(new Message(PARAMETROS_INCORRECTOS.getCodigo(),PARAMETROS_INCORRECTOS.getDescripcion(),PARAMETROS_INCORRECTOS.getTipo()));
 		}
         return foodType;
@@ -116,8 +115,8 @@ public class FoodTypeService {
         try{
             foodTypeRepository.delete(id);
             response.setMensaje(new Message(ELIMINACION_EXITOSO.getCodigo(),ELIMINACION_EXITOSO.getDescripcion(),ELIMINACION_EXITOSO.getTipo()));
-            response.setEsCorrecto(true);
         }catch (Exception e){
+            response.setEsCorrecto(false);
             response.setMensaje(new Message(ERROR_BASE_DATOS.getCodigo(),ERROR_BASE_DATOS.getDescripcion(),ERROR_BASE_DATOS.getTipo()));
             e.printStackTrace();
         }

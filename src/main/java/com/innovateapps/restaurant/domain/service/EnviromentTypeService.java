@@ -34,8 +34,8 @@ public class EnviromentTypeService {
                 response.setMensaje(new Message(REGISTRO_NO_ENCONTRADO.getCodigo(),REGISTRO_NO_ENCONTRADO.getDescripcion(),REGISTRO_NO_ENCONTRADO.getTipo()));
             }
             response.setEnviromentTypeList(enviromentTypeList);
-            response.setEsCorrecto(true);
         }catch (Exception e){
+            response.setEsCorrecto(false);
             response.setMensaje(new Message(ERROR_BASE_DATOS.getCodigo(),ERROR_BASE_DATOS.getDescripcion(),ERROR_BASE_DATOS.getTipo()));
         }
         return response;
@@ -51,8 +51,8 @@ public class EnviromentTypeService {
                 response.setMensaje(new Message(REGISTRO_NO_ENCONTRADO.getCodigo(),REGISTRO_NO_ENCONTRADO.getDescripcion(),REGISTRO_NO_ENCONTRADO.getTipo()));
             }
             response.setEnviromentTypeList(enviromentTypeList);
-            response.setEsCorrecto(true);
         }catch (Exception e){
+            response.setEsCorrecto(false);
             response.setMensaje(new Message(ERROR_BASE_DATOS.getCodigo(),ERROR_BASE_DATOS.getDescripcion(),ERROR_BASE_DATOS.getTipo()));
         }
         return response;
@@ -64,11 +64,11 @@ public class EnviromentTypeService {
             Optional<EnviromentType> enviromentTypeOptional = enviromentTypeRepository.getOne(id);
             if(enviromentTypeOptional.isPresent()){
                 enviromentType = enviromentTypeOptional.get();
-                enviromentType.setEsCorrecto(true);
             }else{
                 enviromentType.setMensaje(new Message(REGISTRO_NO_ENCONTRADO.getCodigo(),REGISTRO_NO_ENCONTRADO.getDescripcion(),REGISTRO_NO_ENCONTRADO.getTipo()));
             }
         }catch (Exception e){
+            enviromentType.setEsCorrecto(false);
             enviromentType.setMensaje(new Message(ERROR_BASE_DATOS.getCodigo(),ERROR_BASE_DATOS.getDescripcion(),ERROR_BASE_DATOS.getTipo()));
             e.printStackTrace();
         }
@@ -95,7 +95,7 @@ public class EnviromentTypeService {
     public EnviromentType administrar(EnviromentTypeDto enviromentTypeDto, EnviromentType enviromentType){
         enviromentType.setEsCorrecto(false);
 		try {
-            if(enviromentType.equals(new EnviromentType())){
+            if(enviromentType.getEnviromentId() == null){
                 enviromentType = typeEnviromentDtoMapeo.toEnviromentType(enviromentTypeDto);
                 enviromentType = enviromentTypeRepository.save(enviromentType);
                 enviromentType.setMensaje(new Message(REGISTRO_EXITOSO.getCodigo(),REGISTRO_EXITOSO.getDescripcion(),REGISTRO_EXITOSO.getTipo()));
@@ -103,9 +103,8 @@ public class EnviromentTypeService {
                 enviromentType = enviromentTypeRepository.save(enviromentType);
                 enviromentType.setMensaje(new Message(REGISTRO_ACTUALIZADO.getCodigo(),REGISTRO_ACTUALIZADO.getDescripcion(),REGISTRO_ACTUALIZADO.getTipo()));
             }
-            enviromentType.setEsCorrecto(true);
-
 		}catch (Exception p){
+            enviromentType.setEsCorrecto(false);
             enviromentType.setMensaje(new Message(PARAMETROS_INCORRECTOS.getCodigo(),PARAMETROS_INCORRECTOS.getDescripcion(),PARAMETROS_INCORRECTOS.getTipo()));
 		}
         return enviromentType;
@@ -116,8 +115,8 @@ public class EnviromentTypeService {
         try{
             enviromentTypeRepository.delete(id);
             response.setMensaje(new Message(ELIMINACION_EXITOSO.getCodigo(),ELIMINACION_EXITOSO.getDescripcion(),ELIMINACION_EXITOSO.getTipo()));
-            response.setEsCorrecto(true);
         }catch (Exception e){
+            response.setEsCorrecto(false);
             response.setMensaje(new Message(ERROR_BASE_DATOS.getCodigo(),ERROR_BASE_DATOS.getDescripcion(),ERROR_BASE_DATOS.getTipo()));
             e.printStackTrace();
         }

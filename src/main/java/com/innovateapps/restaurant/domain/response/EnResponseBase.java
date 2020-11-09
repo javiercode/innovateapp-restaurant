@@ -8,7 +8,7 @@ import java.util.List;
 @Data
 public class EnResponseBase {
 
-	private boolean esCorrecto;
+	private boolean esCorrecto = true;
 	private List<Message> mensajes = new ArrayList<Message>();
 
 	public boolean esCorrecto() {

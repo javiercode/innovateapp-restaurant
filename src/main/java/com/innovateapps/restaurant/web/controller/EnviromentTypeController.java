@@ -18,16 +18,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/foodType")
+@RequestMapping("/enviromentType")
 public class EnviromentTypeController {
     @Autowired
     private EnviromentTypeService enviromentTypeService;
 
     @GetMapping("/all")
-    @ApiOperation("Retorna todos los tipos de comida")
+    @ApiOperation("Retorna todos los tipos de ambiente")
     @ApiResponses({
             @ApiResponse(code = 200, message = "OK"),
-            @ApiResponse(code = 404, message = "Tipos de comida no encontrados")
+            @ApiResponse(code = 404, message = "Tipos de ambiente no encontrados")
     })
     public ResponseEntity<EnviromentTypeResponse> getAll() {
         EnviromentTypeResponse enviromentTypeResponse = enviromentTypeService.getAll();
@@ -39,7 +39,7 @@ public class EnviromentTypeController {
     }
 
     @GetMapping("/paginado")
-    @ApiOperation("Retorna todos los tipos de comida por paginado")
+    @ApiOperation("Retorna todos los tipos de ambiente por paginado")
     public ResponseEntity<EnviromentTypeResponse> getPaginado(
             @ApiParam(value = "numero de pagina", required = false, example = "0") Integer pagina,
             @ApiParam(value = "cantidad de registro en la pagina", required = false, example = "5") Integer cantidad) {
