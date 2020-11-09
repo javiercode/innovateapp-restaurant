@@ -25,17 +25,6 @@ Las librerias para la realizacion de la api, son las siguientes:
 * [jsonwebtoken](https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt)
 
 
-## Uso
-The http-request library is available from [Maven Central](http://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.github.kevinsawicki%22%20AND%20a%3A%22http-request%22).
-
-```xml
-<dependency>
-  <groupId>com.github.javiercode</groupId>
-  <artifactId>innovateapp-restaurant</artifactId>
-  <version>1.0</version>
-</dependency>
-```
-
 
 # Usando el complemento descargado
 
