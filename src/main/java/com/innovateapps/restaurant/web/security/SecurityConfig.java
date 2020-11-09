@@ -24,8 +24,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(innovateAppUserService);
     }
 
-    //@Override
-    protected void configure2(HttpSecurity http) throws Exception {
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
                 .antMatchers("/**/authenticate")
                 .permitAll()
@@ -34,13 +34,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.addFilterBefore(jwtFilterRequest, UsernamePasswordAuthenticationFilter.class);
     }
-
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.csrf().disable().authorizeRequests()
-                .antMatchers("/**/")
-                .permitAll();
-    }
+//
+//    @Override
+//    protected void configure(HttpSecurity http) throws Exception {
+//        http.csrf().disable().authorizeRequests()
+//                .antMatchers("/**/")
+//                .permitAll();
+//    }
 
     @Override
     @Bean
