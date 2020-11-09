@@ -16,9 +16,10 @@ import java.util.Optional;
 @Repository
 public interface TipoComidaJpaRepositorio extends JpaRepository<TipoComida,Integer> {
 
-    @Query("SELECT r FROM TipoComida r ")
+    @Query("SELECT r FROM TipoComida r where r.idUsuarioBaja is null and r.fechaBaja is null")
     Optional<List<TipoComida>> recuparLista();
 
-    public Page<TipoComida> findAll(Pageable pageable);
+    @Query("SELECT r FROM TipoComida r where r.idUsuarioBaja is null and r.fechaBaja is null")
+    public Page<TipoComida> recuparPaginado(Pageable pageable);
 
 }

@@ -16,7 +16,7 @@ public interface RestauranteAmbienteMapeo {
             @Mapping(source = "idRestaurante", target = "restaurantId"),
             @Mapping(source = "idTipoAmbiente", target = "enviromentId"),
             @Mapping(source = "restaurante", target = "restaurant"),
-            @Mapping(source = "tipoAmbiente", target = "typeEnviroment"),
+            @Mapping(source = "tipoAmbiente", target = "enviromentType"),
     })
     RestaurantEnviroment toRestaurantEnviroment(RestauranteAmbiente restauranteAmbiente);
     List<RestaurantEnviroment> toRestaurantEnviromentList(List<RestauranteAmbiente> restauranteAmbientes);

@@ -9,7 +9,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
 
 @Mapper(componentModel = "spring")
-public interface TypeFoodDtoMapeo {
+public interface FoodTypeDtoMapeo {
     @Mappings({
             @Mapping(source = "name", target = "name"),
             @Mapping(source = "description", target = "description"),

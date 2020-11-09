@@ -1,7 +1,7 @@
 package com.innovateapps.restaurant.persistencia;
 
-import com.innovateapps.restaurant.domain.TypeEnviroment;
-import com.innovateapps.restaurant.domain.repository.TypeEnviromentRepository;
+import com.innovateapps.restaurant.domain.EnviromentType;
+import com.innovateapps.restaurant.domain.repository.EnviromentTypeRepository;
 import com.innovateapps.restaurant.persistencia.entidad.TipoAmbiente;
 import com.innovateapps.restaurant.persistencia.jpa.TipoAmbienteJpaRepositorio;
 import com.innovateapps.restaurant.persistencia.mapeo.TipoAmbienteMapeo;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class TipoAmbienteRepositorio implements TypeEnviromentRepository {
+public class TipoAmbienteRepositorio implements EnviromentTypeRepository {
     @Autowired
     private TipoAmbienteJpaRepositorio tipoAmbienteJpaRepositorio;
     @Autowired
@@ -21,25 +21,25 @@ public class TipoAmbienteRepositorio implements TypeEnviromentRepository {
 
 
     @Override
-    public Optional<List<TypeEnviroment>> getLista(){
+    public Optional<List<EnviromentType>> getLista(){
         Optional<List<TipoAmbiente>> restauranteList = tipoAmbienteJpaRepositorio.recuparLista();
         return restauranteList.map(restaurante -> mapper.toTypeEnviromentList(restaurante));
     }
     @Override
-    public List<TypeEnviroment> getListaPaginada(Integer pagina, Integer cantidad){
+    public List<EnviromentType> getListaPaginada(Integer pagina, Integer cantidad){
         List<TipoAmbiente> restaurantes = tipoAmbienteJpaRepositorio.findAll(PageRequest.of(pagina, cantidad)).getContent();
         return mapper.toTypeEnviromentList( restaurantes);
     }
 
     @Override
-    public Optional<TypeEnviroment> getOne(Integer id) {
+    public Optional<EnviromentType> getOne(Integer id) {
         Optional<TipoAmbiente> restauranteOptional = tipoAmbienteJpaRepositorio.findById(id);
         return restauranteOptional.map(restaurante -> mapper.toTypeEnviroment(restauranteOptional.get()));
     }
 
     @Override
-    public TypeEnviroment save(TypeEnviroment typeEnviroment) {
-        TipoAmbiente restaurante = mapper.toTipoAmbiente(typeEnviroment);
+    public EnviromentType save(EnviromentType enviromentType) {
+        TipoAmbiente restaurante = mapper.toTipoAmbiente(enviromentType);
         return mapper.toTypeEnviroment(tipoAmbienteJpaRepositorio.save(restaurante));
     }
     @Override

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/foodType")
-public class TypeFoodController {
+public class FoodTypeController {
     @Autowired
     private FoodTypeService foodTypeService;
 

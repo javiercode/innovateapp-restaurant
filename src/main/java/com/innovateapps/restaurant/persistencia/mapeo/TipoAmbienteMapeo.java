@@ -1,6 +1,6 @@
 package com.innovateapps.restaurant.persistencia.mapeo;
 
-import com.innovateapps.restaurant.domain.TypeEnviroment;
+import com.innovateapps.restaurant.domain.EnviromentType;
 import com.innovateapps.restaurant.persistencia.entidad.TipoAmbiente;
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
@@ -16,8 +16,8 @@ public interface TipoAmbienteMapeo {
             @Mapping(source = "nombre", target = "name"),
             @Mapping(source = "descripcion", target = "description"),
     })
-    TypeEnviroment toTypeEnviroment(TipoAmbiente tipoAmbiente);
-    List<TypeEnviroment> toTypeEnviromentList(List<TipoAmbiente> tipoAmbienteList);
+    EnviromentType toTypeEnviroment(TipoAmbiente tipoAmbiente);
+    List<EnviromentType> toTypeEnviromentList(List<TipoAmbiente> tipoAmbienteList);
 
     @InheritInverseConfiguration
     @Mapping(target = "restauranteAmbienteList", ignore = true)
@@ -29,5 +29,5 @@ public interface TipoAmbienteMapeo {
     @Mapping(target = "idUsuarioBaja", ignore = true)
     @Mapping(target = "idUsuarioDesde", ignore = true)
     @Mapping(target = "idUsuarioHasta", ignore = true)
-    TipoAmbiente toTipoAmbiente(TypeEnviroment typeEnviroment);
+    TipoAmbiente toTipoAmbiente(EnviromentType enviromentType);
 }

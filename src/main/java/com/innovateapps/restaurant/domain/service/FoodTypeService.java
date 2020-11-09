@@ -6,7 +6,7 @@ import com.innovateapps.restaurant.domain.response.EnResponseBase;
 import com.innovateapps.restaurant.domain.response.Message;
 import com.innovateapps.restaurant.domain.repository.FoodTypeRepository;
 import com.innovateapps.restaurant.domain.response.FoodTypeResponse;
-import com.innovateapps.restaurant.persistencia.mapeo.TypeFoodDtoMapeo;
+import com.innovateapps.restaurant.persistencia.mapeo.FoodTypeDtoMapeo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +21,7 @@ public class FoodTypeService {
     @Autowired
     private FoodTypeRepository foodTypeRepository;
     @Autowired
-    private TypeFoodDtoMapeo typeFoodDtoMapeo;
+    private FoodTypeDtoMapeo foodTypeDtoMapeo;
 
     public FoodTypeResponse getAll(){
         FoodTypeResponse response = new FoodTypeResponse();
@@ -82,7 +82,7 @@ public class FoodTypeService {
     public FoodType update(FoodTypeDto foodTypeDto, Integer id){
         Optional<FoodType> foodTypeOpt = foodTypeRepository.getOne(id);
         if(foodTypeOpt.isPresent()){
-            FoodType foodType = typeFoodDtoMapeo.toFoodType(foodTypeDto);
+            FoodType foodType = foodTypeDtoMapeo.toFoodType(foodTypeDto);
             foodType.setFoodId(id);
             return administrar(foodTypeDto, foodType);
         }else{
@@ -96,7 +96,7 @@ public class FoodTypeService {
         foodType.setEsCorrecto(false);
 		try {
             if(foodType.equals(new FoodType())){
-                foodType = typeFoodDtoMapeo.toFoodType (foodTypeDto);
+                foodType = foodTypeDtoMapeo.toFoodType (foodTypeDto);
                 foodType = foodTypeRepository.save(foodType);
                 foodType.setMensaje(new Message(REGISTRO_EXITOSO.getCodigo(),REGISTRO_EXITOSO.getDescripcion(),REGISTRO_EXITOSO.getTipo()));
             }else{

@@ -30,7 +30,7 @@ public class TipoComidaRepositorio implements FoodTypeRepository {
     }
     @Override
     public List<FoodType> getListaPaginada(Integer pagina, Integer cantidad){
-        List<TipoComida> restaurantes = tipoComidaJpaRepositorio.findAll(PageRequest.of(pagina, cantidad)).getContent();
+        List<TipoComida> restaurantes = tipoComidaJpaRepositorio.recuparPaginado(PageRequest.of(pagina, cantidad)).getContent();
         return mapper.toFoodTypeList( restaurantes);
     }
 
@@ -64,6 +64,7 @@ public class TipoComidaRepositorio implements FoodTypeRepository {
         TipoComida tipoComida = tipoComidaJpaRepositorio.getOne(id);
         tipoComida.setFechaBaja(LocalDateTime.now());
         tipoComida.setIdUsuarioBaja(ID_USUARIO_DEFECTO);
+        tipoComidaJpaRepositorio.save(tipoComida);
         return mapper.toFoodType(tipoComida);
     }
 }

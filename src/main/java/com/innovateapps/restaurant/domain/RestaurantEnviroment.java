@@ -10,5 +10,5 @@ public class RestaurantEnviroment {
     private Integer restaurantId;
     private Integer enviromentId;
     private Restaurant restaurant;
-    private TypeEnviroment typeEnviroment;
+    private EnviromentType enviromentType;
 }
