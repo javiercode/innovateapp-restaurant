@@ -105,4 +105,11 @@
 		</plugins>
 	</build>
 
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>GitHub javiercode Apache Maven Packages</name>
+			<url>https://maven.pkg.github.com/javiercode/innovateapp-restaurant</url>
+		</repository>
+	</distributionManagement>
 </project>
